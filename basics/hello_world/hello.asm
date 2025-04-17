@@ -1,11 +1,11 @@
 bits 64							; specify 64-bit mode
+
 section .data
     msg db "Hello, World!", 10	; String with newline and null terminator
 	msglen equ $ - msg			; calculate msg length
 
 section .text
-    global _start            	; Make the entry point visible (tells the assembler _start: symbol should be visible outside of this file)
-								; this is very useful for linker
+	global _start            	; Make the entry point visible (tells the assembler _start: symbol should be visible outside of this file)
 
 _start:							; this is _start: label it marks entry point for the progam (it works like main() in c)
 
