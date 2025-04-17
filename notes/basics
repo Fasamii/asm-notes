@@ -83,3 +83,15 @@
 #	- .data -> contains initialized data
 #	- .bss -> contains initialized data
 #	and depending on the assembler e.g.: .rodata (read only data)
+#
+#
+# System calls: to interact with the operating system asm programs use system calls (these depends on the Operating system)
+#
+#	- Linux -> you put the system call number in RAX, arguments in specific registers and use syscall instruction
+#	- Windows -> you typicaly use Win32 API via call instruction to library functions
+#
+#
+# Assemblers and Tools: to work with asembly you need:
+#	- an assembler -> converts asm code to machine code (e.g.: NASM, MASM, or GAS)
+#	- a linker -> combines multiple obiect files into an executable
+#	- a debugger -> helps inspect registers and memory state during execution (like GDB)
