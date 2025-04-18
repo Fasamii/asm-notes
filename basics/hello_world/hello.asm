@@ -1,22 +1,18 @@
-bits 64							; specify 64-bit mode
+.global _start            			# Make the entry point visible (tells the assembler _start: symbol should be visible outside of this file)
 
-section .data
-    msg db "Hello, World!", 10	; String with newline and null terminator
-	msglen equ $ - msg			; calculate msg length
+.section .data						# starts data section
+    msg:							# tells in program name for string
+		.ascii "Hello, World!\n"  	# String .ascii with newline and null terminator
 
-section .text
-	global _start            	; Make the entry point visible (tells the assembler _start: symbol should be visible outside of this file)
+.section .text
+_start:								# this is _start: label it marks entry point for the progam (it works like main() in c)
 
-_start:							; this is _start: label it marks entry point for the progam (it works like main() in c)
+	movl $4,    %eax				# tells which syscall to perform
+	movl $1,    %ebx				# tells which file descriptor to use
+	movl $msg,  %ecx				# set memory addres of begining of the String
+	movl $15,	%edx				# tells how many chars from beggining address to read
+	int $0x80						# interupts program (syscall)
 
-    ; Write the message to stdout
-    mov rax, 1                      ; syscall number for write
-    mov rdi, 1                      ; file descriptor 1 is stdout
-    mov rsi, msg                    ; message to write
-    mov rdx, msglen					; message length
-    syscall                         ; call kernel
-
-    ; Exit the program
-    mov rax, 60                     ; syscall number for exit
-    xor rdi, rdi 						; exit code 0
-    syscall                         ; call kernel
+	movl $1,	%eax				# tells which syscall to perform
+	movl $0, 	%ebx				# sets exit status to 0
+	int $0x80						# interupts program (syscall)

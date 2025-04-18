@@ -1,0 +1,15 @@
+Evry CPU has general purpose registers and some special registers e.g.:
+	- x86_32-bit CPU has:
+		- General purpose registers such as:
+			- %eax
+			- %ebx
+			- %ecx
+			- %edi
+			- %esi
+		- And some special purpose registers:
+			- %ebp <- base pointer register
+			- %esp <- stack pointer register
+			- %eip <- instruction pointer register
+			- %eflags <- status register
+
+		!! Depending on architecture each register can hold 32-bit data for 32-bit CPU and 64-bit for 64-bit CPU
